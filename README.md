@@ -1,6 +1,6 @@
 # CampusMart 校园二手交易与订单管理系统
 
-CampusMart 是一个面向校园学生的二手交易与订单管理系统。项目包含 Vue 3 前台、管理员后台、订单状态流转、消息通知和轻量 Spring Boot REST API。
+CampusMart 是一个面向校园学生的二手交易与订单管理系统，适合前端实习项目展示。项目包含 Vue 3 前台、管理员后台、订单状态流转、消息通知和轻量 Spring Boot REST API。
 
 ## 技术栈
 
@@ -31,4 +31,93 @@ CampusMart 是一个面向校园学生的二手交易与订单管理系统。项
 - 管理员：`admin / admin123`
 - seed 中还有 `momo / momo123`，以及被禁用的 `chen / chen123`
 
+## 在线访问
 
+GitHub Pages 部署地址：
+
+```text
+https://wtyaok.github.io/CAMPUSMART/
+```
+
+部署由 `.github/workflows/deploy-pages.yml` 自动完成。推送到 `main` 分支后，GitHub Actions 会构建 `frontend/dist` 并发布到 Pages。
+
+## 前端运行
+
+默认使用前端 mock 数据，最适合直接演示完整业务闭环。
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+访问：`http://localhost:5173`
+
+构建：
+
+```bash
+cd frontend
+npm run build
+```
+
+如需连接 Spring Boot 后端，启动后端后设置：
+
+```bash
+cd frontend
+$env:VITE_USE_MOCK="false"
+npm run dev
+```
+
+## 后端运行
+
+需要 Java 17 和 Maven。
+
+```bash
+cd backend
+mvn spring-boot:run
+```
+
+后端地址：`http://localhost:8080`
+
+后端使用内存 seed 数据，重启后恢复初始数据；主要用于支撑前端演示，不做复杂持久化。
+
+## Docker Compose
+
+```bash
+docker compose up -d
+```
+
+包含：
+
+- MySQL：`localhost:3306`，库名/账号/密码均为 `campusmart`
+- Redis：`localhost:6379`
+
+当前 Spring Boot 演示后端默认不依赖数据库，Docker 服务用于满足本地环境和后续扩展。
+
+## 主要接口
+
+- Auth：`POST /api/auth/login`、`POST /api/auth/register`、`GET /api/auth/me`
+- Product：`GET /api/products`、`GET /api/products/{id}`、`POST /api/products`、`PUT /api/products/{id}`、`DELETE /api/products/{id}`、`GET /api/products/my`
+- Favorite：`POST /api/products/{id}/favorite`、`DELETE /api/products/{id}/favorite`、`GET /api/favorites`
+- Order：`GET /api/orders`、`GET /api/orders/{id}`、`POST /api/orders`、`PUT /api/orders/{id}/status`
+- Message：`GET /api/messages`、`PUT /api/messages/{id}/read`、`PUT /api/messages/read-all`、`DELETE /api/messages/{id}`
+- Admin：`GET /api/admin/dashboard`、`GET /api/admin/products/review`、`PUT /api/admin/products/{id}/approve`、`PUT /api/admin/products/{id}/reject`、`PUT /api/admin/products/{id}/off-shelf`、`GET /api/admin/users`、`PUT /api/admin/users/{id}/status`、`GET /api/admin/orders`、`PUT /api/admin/orders/{id}/handle`
+
+统一返回结构：
+
+```json
+{
+  "code": 0,
+  "message": "success",
+  "data": {}
+}
+```
+
+## 截图占位
+
+- 登录页：居中登录卡片、测试账号提示、角色跳转
+- 前台首页：Banner、分类入口、推荐商品
+- 商品列表：搜索筛选、分页、卡片 hover
+- 商品详情：轮播图、收藏、下单弹窗
+- 我的订单：买入/卖出、状态按钮、详情时间线
+- 管理后台：工作台、审核、商品/用户/订单管理
