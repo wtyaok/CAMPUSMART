@@ -1,0 +1,1 @@
+import{a0 as s}from"./index-BmdyEHbJ.js";function t(e){return s.messages(e)}function n(e,a){return s.readMessage(e,a)}function g(e){return s.readAllMessages(e)}function i(e,a){return s.deleteMessage(e,a)}export{g as a,i as d,t as g,n as r};

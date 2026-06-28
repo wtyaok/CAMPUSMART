@@ -1,0 +1,1 @@
+import{a0 as t}from"./index-BmdyEHbJ.js";function n(r,e){return t.orders(r,e)}function d(r,e){return t.orderDetail(r,e)}function o(r,e){return t.createOrder(r,e)}function p(r,e,a,u){return t.updateOrderStatus(r,e,a,u)}export{d as a,o as c,n as g,p as u};
