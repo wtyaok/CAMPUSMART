@@ -1,0 +1,162 @@
+:root {
+  --cm-primary: #2563eb;
+  --cm-primary-dark: #1d4ed8;
+  --cm-green: #10b981;
+  --cm-orange: #f59e0b;
+  --cm-red: #ef4444;
+  --cm-text: #172033;
+  --cm-muted: #667085;
+  --cm-border: #e6eaf0;
+  --cm-bg: #f5f7fb;
+  --cm-card: #ffffff;
+  --cm-shadow: 0 10px 30px rgba(30, 41, 59, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  color: var(--cm-text);
+  background: var(--cm-bg);
+  font-family:
+    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.page-shell {
+  width: min(1180px, calc(100vw - 32px));
+  margin: 0 auto;
+}
+
+.soft-card {
+  background: var(--cm-card);
+  border: 1px solid var(--cm-border);
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.05);
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin: 22px 0 14px;
+
+  h2,
+  h3 {
+    margin: 0;
+  }
+
+  p {
+    margin: 6px 0 0;
+    color: var(--cm-muted);
+  }
+}
+
+.muted {
+  color: var(--cm-muted);
+}
+
+.price {
+  color: #ef4444;
+  font-weight: 800;
+}
+
+.grid-products {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  padding: 18px;
+}
+
+.table-card {
+  padding: 18px;
+}
+
+.form-card {
+  padding: 24px;
+}
+
+.admin-page {
+  padding: 22px;
+}
+
+.metric-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.metric-card {
+  padding: 18px;
+  background: #fff;
+  border: 1px solid var(--cm-border);
+  border-radius: 8px;
+
+  .label {
+    color: var(--cm-muted);
+    font-size: 13px;
+  }
+
+  .value {
+    margin-top: 8px;
+    font-size: 28px;
+    font-weight: 800;
+  }
+}
+
+.image-cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.el-button {
+  border-radius: 6px;
+}
+
+.el-card {
+  border-radius: 8px;
+}
+
+@media (max-width: 980px) {
+  .grid-products {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .metric-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .page-shell {
+    width: min(100% - 20px, 1180px);
+  }
+
+  .grid-products {
+    grid-template-columns: 1fr;
+  }
+
+  .toolbar {
+    align-items: stretch;
+
+    > * {
+      width: 100%;
+    }
+  }
+}

@@ -1,0 +1,9 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: campus-mart-backend
+
+campusmart:
+  demo-mode: true
