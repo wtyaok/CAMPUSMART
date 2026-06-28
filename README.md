@@ -41,6 +41,8 @@ https://wtyaok.github.io/CAMPUSMART/
 
 部署由 `.github/workflows/deploy-pages.yml` 自动完成。推送到 `main` 分支后，GitHub Actions 会构建 `frontend/dist` 并发布到 Pages。
 
+首次部署如果访问地址返回 404，请在 GitHub 仓库页面进入 `Settings` → `Pages`，将 `Build and deployment` 的 `Source` 设置为 `Deploy from a branch`，分支选择 `gh-pages`，目录选择 `/ (root)`，保存后等待 1-3 分钟即可访问。
+
 ## 前端运行
 
 默认使用前端 mock 数据，最适合直接演示完整业务闭环。
